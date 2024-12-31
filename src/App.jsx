@@ -4,17 +4,17 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
 import About from "./pages/About";
-import { useSelector } from "react-redux";
 import Header from "./components/header.jsx";
 import ProductsDetails from "./pages/ProductsDetails.jsx";
-
+import Cart from "./pages/Cart.jsx";
+import Like from "./pages/Like.jsx";
+import NotFound from "./pages/NotFound.jsx";
 const App = () => {
-	const categoryId = useSelector((state) => state.category.selectedCategoryId);
-	console.log(categoryId);
+
 	return (
 		<div className='min-h-screen bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100'>
 			<Header />
-			<div className='flex'>
+			<div className='flex flex-col'>
 				<main className='w-full bg-gray-200 dark:bg-gray-800 p-4 rounded-md shadow-md'>
 					<Routes>
 						<Route
@@ -22,7 +22,7 @@ const App = () => {
 							element={<Home />}
 						/>
 						<Route
-							path='product'
+							path='/product'
 							element={<Product />}
 						/>
 						<Route
@@ -30,9 +30,18 @@ const App = () => {
 							element={<ProductsDetails />}
 						/>
 						<Route
-							path='about'
+							path='/about'
 							element={<About />}
 						/>
+						<Route
+							path='/cart'
+							element={<Cart />}
+						/>
+						<Route
+							path='/like'
+							element={<Like />}
+						/>
+						<Route path="*" element={<NotFound/>} />
 					</Routes>
 				</main>
 			</div>
